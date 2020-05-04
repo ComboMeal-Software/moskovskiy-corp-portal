@@ -10,6 +10,8 @@ var user = new Schema({
     name:String,
     lastName:String,
     birthDate:Date,
-    admin:Boolean,
+    admin:{
+        type:Boolean,
+        required:true
 });
 module.exports = user;
