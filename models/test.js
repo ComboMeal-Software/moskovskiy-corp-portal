@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var Question = require('./question');
+const Question = require('./question').schema;
 const Schema = mongoose.Schema;
 var test = new Schema({
     title:String,
@@ -7,4 +7,4 @@ var test = new Schema({
     questions:[Question],
 
 });
-module.exports = test;
+module.exports = mongoose.model('Test',test);;

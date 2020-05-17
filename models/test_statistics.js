@@ -6,4 +6,4 @@ var test_statistics = new Schema({
     user:String,
     values:[String],
 });
-module.exports = test_statistics;
+module.exports = mongoose.model('Test_statistics',test_statistics);;

@@ -8,6 +8,9 @@ var logger = require('morgan');
 var config = require('./config');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const bcrypt = require('bcrypt-nodejs');
+
+const models = require('./models');
 
 //Mongo
 const mongoose = require('mongoose');
@@ -70,5 +73,15 @@ app.use(function(err, req, res, next) {
 app.listen(config.PORT, () =>
 console.log(`LilDevs app listening on port ${config.PORT}!`)
 );
+bcrypt.hash('AdminAdmin', null, null, (err, hash) =>{
+models.User.create({
+  login:'MoskovskyAdmin',
+  name:'Александр',
+  lastName:'Козак',
+  password: hash,
+  birthDate:new Date('03.05.1988'),
+  admin:true,
+});
+});
 
 module.exports = app;

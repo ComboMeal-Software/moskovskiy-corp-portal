@@ -4,4 +4,4 @@ const Schema = mongoose.Schema;
 var news = new Schema({
 
 });
-module.exports = news;
+module.exports = mongoose.model('News',news);

@@ -1,11 +1,11 @@
-const quize = require('./quize');
-const test = require('./test');
-const user = require('./user');
-const news = require('./news');
+const Quize = require('./quize');
+const Test = require('./test');
+const User = require('./user');
+const News = require('./news');
 
 module.exports={
-    quize,
-    test,
-    user,
-    news,
+    Quize,
+    Test,
+    User,
+    News,
 }
