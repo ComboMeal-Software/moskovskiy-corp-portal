@@ -8,12 +8,17 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req,res)=>{
-  if(!require.session) {
+  if(!req.session.userLogin) {
   res.render('login.hbs',{ok:true, title:'ВОР ТРУСОВ'})
 } else{
-  res.render('index.hbs')
+  if(!req.session.admin)
+  res.render('Main.hbs')
+  else{
+    res.render('Admin_main.hbs')
+  }
 }
 });
+
 router.post('login',jsonParser,(req,res)=>{
   const login = req.body.login;
   const password = req.body.password;
@@ -60,8 +65,10 @@ router.post('login',jsonParser,(req,res)=>{
               req.session.Name = user.name + " " + user.lastName;
               req.session.userId = user.id;
               req.session.userLogin = user.login;
+              req.session.admin = user.admin;
               res.json({
                 ok:true,
+                admin:user.admin,
               });
             }
           });
