@@ -14,6 +14,7 @@ const user = new Schema({
     patronymic:String,
     birthDate:Date,
     password:String,
+    avatar:String,
     admin:{
         type:Boolean,
         required:true

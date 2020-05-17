@@ -83,6 +83,12 @@ router.post('/Admin_emp_edit',jsonParser,(req,res)=>{
 
       if (!user) {
         let fullName = req.body.name.split(' ');
+        let avatar = req.files.avatar;
+        filename = './public/avatars/'+ login + Date.now();
+        avatar.mv(filename, (err)=>{
+          if (err)
+          return res.status(500).send(err);
+        });
         bcrypt.hash(password, null, null, (err, hash) => {
             await  models.User.findOneAndUpdate({login: Userlogin},
             {
@@ -94,6 +100,7 @@ router.post('/Admin_emp_edit',jsonParser,(req,res)=>{
             login,
             password:hash,
             birthdate: new Date (req.body.birthdate),
+            avatar:filename,
           }, (err,user)=>{
             if(!err){
                 res.json({

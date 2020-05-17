@@ -6,6 +6,8 @@ const pattern =  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\")
 const router = express.Router();
 const bodyParser = require("body-parser");
 const department_list = models.Departments.find();
+const multer  = require("multer");
+const upload = multer({dest:"./public/avatars"});
 //парсить будем Json
 
 const jsonParser = bodyParser.json();
@@ -81,6 +83,11 @@ router.post('/Admin_emp_new',jsonParser,(req,res)=>{
 
       if (!user) {
         let fullName = req.body.name.split(' ');
+        filename = './public/avatars/'+ login + Date.now();
+        avatar.mv(filename, (err)=>{
+          if (err)
+          return res.status(500).send(err);
+        });
         bcrypt.hash(password, null, null, (err, hash) => {
           models.User.create({
             lastName:fullName[0],
@@ -91,6 +98,7 @@ router.post('/Admin_emp_new',jsonParser,(req,res)=>{
             login,
             password:hash,
             birthdate: new Date (req.body.birthdate),
+            avatar:filename,
           })          
             .then(user => {
               res.json({
