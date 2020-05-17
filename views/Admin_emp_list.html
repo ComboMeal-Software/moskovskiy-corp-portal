@@ -1,0 +1,114 @@
+<html>
+<head id="init">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>{{{title}}}</title>
+
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">             
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/54e64f34b2.js" crossorigin="anonymous"></script>
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body> 
+
+		<div class="preloader-wrapper">
+			<div class="preloader">
+				<img src="images/loader.gif" alt="Loading..." width="100px">
+			</div>
+		</div>
+
+
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col s3">
+						<a href="#" class="logo">
+							<img src="images/logo.png" alt="Универмаг Московский">
+						</a>
+					</div>
+
+					<div class="col s9">
+						<ul class="nav">
+							<li class="flr">
+								<a href="#">
+									Выйти
+									<i class="fas fa-sign-out-alt"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div class="wrapper admin">
+
+			<div class="container">
+				<div class="row">
+					
+					<div class="col s12">
+						<a class="btn-c btn-cancel">
+							<i class="fas fa-chevron-left"></i>
+							Назад
+						</a>
+					</div>
+
+
+					<div class="col s3">
+						<div class="collegues_filters">
+							<div class="search">
+								<input type="text">
+								<button><i class="fas fa-search"></i></button>
+							</div>
+
+							<ul class="jobs_list">
+								{{#each jobs_list}}
+								<li>
+									<label>
+										<input type="checkbox" />
+										<span>{{this.name}}</span>
+									</label>
+								</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+					<div class="col s9">
+						<div class="collegues_list study_content">
+							<div class="row">
+								{{#each emp_list}}
+								<div class="col s6">
+									<div class="user">
+										<div class="avatar">
+											<img src="{{this.avatar}}" alt="Avatar">
+										</div>
+										<div class="details">
+											<div class="name">
+												{{this.name}}
+											</div>
+											<div class="job_name">
+												{{this.job_name}}
+											</div>
+										</div>
+									</div>
+								</div>
+								{{/each}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+		<script src="js/script.js"></script>
+	</body>
+	</html>

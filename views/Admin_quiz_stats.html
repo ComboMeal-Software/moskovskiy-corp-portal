@@ -1,0 +1,167 @@
+<html>
+<head id="init">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>News</title>
+
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">             
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/54e64f34b2.js" crossorigin="anonymous"></script>
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body> 
+
+		<div class="preloader-wrapper">
+			<div class="preloader">
+				<img src="images/loader.gif" alt="Loading..." width="100px">
+			</div>
+		</div>
+
+
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col s3">
+						<a href="#" class="logo">
+							<img src="images/logo.png" alt="Универмаг Московский">
+						</a>
+					</div>
+
+					<div class="col s9">
+						<ul class="nav">
+							<li class="flr">
+								<a href="#">
+									Выйти
+									<i class="fas fa-sign-out-alt"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div class="wrapper quiz">
+
+
+			<div class="container">
+				<div class="row">
+
+					<div class="col s12">
+						<div class="col s12">
+							<a href="#" class="btn-c btn-cancel">
+								<i class="fas fa-chevron-left"></i>
+								Назад
+							</a>
+						</div>
+					</div>
+
+					<div class="col s3">
+						<div class="study_guide">
+							<ul class="quiz_list">
+								<li>
+									<a href="#">
+										Опрос 1
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Опрос 2
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Опрос 3
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Опрос 4
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Опрос 5
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Опрос 6
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										Опрос 7
+									</a>
+								</li>
+							</ul>
+
+							<div class="tar">
+								<a href="#" class="btn-c btn-primary btn-sm">
+									Добавить опрос
+								</a>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col s9">
+						<div class="study_content" id="vartival_chart">
+							<canvas id="myChart"></canvas>
+						</div>
+					</div>
+				</div>  
+			</div> 
+
+
+		</div>
+
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+		<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+		<script src="js/script.js"></script>
+
+
+		<script>
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+					datasets: [{
+						label: '# of Votes',
+						data: [12, 19, 3, 5, 2, 3, 3, 10, 12, 12, 2],
+						backgroundColor: [
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						]
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+		</script>
+	</body>
+	</html>

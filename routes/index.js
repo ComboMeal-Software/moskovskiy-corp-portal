@@ -8,8 +8,8 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req,res)=>{
-  if(!require.session.userLogin) {
-  res.render('login.hbs')
+  if(!require.session) {
+  res.render('login.hbs',{ok:true, title:'ВОР ТРУСОВ'})
 } else{
   res.render('index.hbs')
 }

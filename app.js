@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,11 +8,19 @@ var logger = require('morgan');
 var config = require('./config');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+//Mongo
+const mongoose = require('mongoose');
+const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-var app = express();
+
 
 var dataBaseConnect = require('./databaseConnect');
+// Connect to database
+
+dataBaseConnect();
+
 
 
 // view engine setup
@@ -35,10 +44,6 @@ app.use(
     })
   })
 );
-
-// Connect to database
-
-dataBaseConnect();
 
 
 app.use('/', indexRouter);

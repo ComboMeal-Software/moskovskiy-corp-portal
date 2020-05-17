@@ -1,0 +1,453 @@
+<html>
+<head id="init">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>{{{title}}}</title>
+
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">             
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/54e64f34b2.js" crossorigin="anonymous"></script>
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body> 
+
+		<div class="preloader-wrapper">
+			<div class="preloader">
+				<img src="images/loader.gif" alt="Loading..." width="100px">
+			</div>
+		</div>
+
+
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col s3">
+						<a href="#" class="logo">
+							<img src="images/logo.png" alt="Универмаг Московский">
+						</a>
+					</div>
+
+					<div class="col s9">
+						<ul class="nav">
+							<li>
+								<a href="#">
+									История
+								</a>
+							</li>
+							<li class="withDropdown">
+								<a href="#">
+									Адаптация
+									<i class="fas fa-chevron-down"></i>
+								</a>
+								<ul>
+									<li><a href="#">Lorem ipsum.</a></li>
+									<li><a href="#">Dolor, quasi!</a></li>
+									<li><a href="#">Obcaecati, sit.</a></li>
+								</ul>
+							</li>
+							<li class="withDropdown">
+								<a href="#">
+									Аттестация
+									<i class="fas fa-chevron-down"></i>
+								</a>
+								<ul>
+									<li><a href="#">Lorem ipsum.</a></li>
+									<li><a href="#">Dolor, quasi!</a></li>
+									<li><a href="#">Obcaecati, sit.</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">
+									Опросы
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Связь
+								</a>
+							</li>
+							<li class="withSep">
+								<a href="#">
+									{{{user_name}}}
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div class="wrapper news_wr">
+			<div class="user_banner">
+				<div class="user">
+					<div class="avatar">
+						<img src="{{{common.avatar}}}" alt="Avatar">
+					</div>
+					<div class="details">
+						<div class="name">
+							{{{common.name}}}
+						</div>
+						<div class="job_name">
+							{{{contacts.job_name}}}
+						</div>
+					</div>
+				</div>
+			</div> 
+
+			<div class="container">
+				<div class="row">
+					<div class="col s12">
+						<ul class="wr_tabs tabs">
+							<li class="tab"><a class="active" href="#about">Общая информация</a></li>
+							<li class="tab"><a href="#donuts">Статистика</a></li>
+							<li class="tab"><a href="#donuts2">Статистика 2</a></li>
+							<li class="tab"><a href="#collegues">Коллеги</a></li>
+							<li class="tab"><a href="#marks">Оценка компетенции</a></li>
+							<li class="tab"><a href="#study">Обучение</a></li>
+						</ul>
+					</div>
+
+					<div id="about" class="col s12">
+						<div class="profile_about">
+							<div class="row">
+
+								<div class="col s6">
+									<div class="contants_card">
+										<div class="title">
+											Контакты
+										</div>
+										<ul>
+											<li>
+												{{{contacts.phone}}}
+											</li>
+											<li>
+												{{{contacts.mail}}}
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col s6">
+									<div class="contants_card tal">
+										<div class="title">
+											Занимаемая должность
+										</div>
+										<ul>
+											<li>
+												{{{contacts.job_name}}}
+											</li>
+											<li>
+												{{{contacts.job_desc}}}
+											</li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<div id="donuts" class="col s12">
+						<div class="profile_donuts">
+							<div class="row">
+								<div class="col s4">
+									<canvas id="Donut1"></canvas>
+								</div>
+								<div class="col s4">
+									<canvas id="Donut2"></canvas>
+								</div>
+								<div class="col s4">
+									<canvas id="Donut3"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="donuts2" class="col s12">
+						<div id="vartival_chart">
+							<canvas id="myChart"></canvas>
+						</div>
+					</div>
+
+					<div id="collegues" class="col s12">
+
+						<div class="row">
+							<div class="col s4">
+								<div class="collegues_filters">
+									<div class="search">
+										<input type="text">
+										<button><i class="fas fa-search"></i></button>
+									</div>
+
+									<ul class="jobs_list">
+										{{#each collegues.jobs_list}}
+										<li>
+											<label>
+												<input type="checkbox" />
+												<span>{{this.name}}</span>
+											</label>
+										</li>
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+							<div class="col s8">
+								<div class="collegues_list">
+									<div class="row">
+										{{#each collegues.collegues_list}}
+										<div class="col s6">
+											<div class="user">
+												<div class="avatar">
+													<img src="{{this.avatar}}" alt="Avatar">
+												</div>
+												<div class="details">
+													<div class="name">
+														{{this.name}}
+													</div>
+													<div class="job_name">
+														{{this.job_name}}
+													</div>
+												</div>
+											</div>
+										</div>
+										{{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div id="marks" class="col s12">
+						<div class="marks_info">
+							<div class="col s12">
+								<div class="single_donut">
+									<canvas id="Donut4"></canvas>
+								</div>
+
+								<h4 class="tac">Оценка компетенции</h4>
+
+								<table>
+									<thead>
+										<tr>
+											<th></th>
+											<th>Компетенция не проявляется (1)</th>
+											<th>Ниже среднего (2)</th>
+											<th>Необходимый уровень (3)</th>
+											<th>Выше среднего (4)</th>
+											<th>Уровень мастерства (5)</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr><td>Профессиональные компетенции: Очень значисы</td></tr>
+										<tr>
+											<td width="300px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nostrum.</td>
+											<td> </td>
+											<td> </td>
+											<td> </td>
+											<td> </td>
+											<td> </td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div id="study">
+						<div class="row">
+							<div class="col s3">
+								<div class="study_guide">
+									<ul class="collapsible">
+										{{#each advantages}}
+										<li>
+											<div class="collapsible-header">
+												{{this.theme_name}}
+												<i class="fas fa-chevron-down"></i>
+											</div>
+
+											<div class="collapsible-body">
+												<ul>
+													{{#each this.items}}
+													<li>
+														<a href="{{this.link}}">{{this.name}}</a>
+													</li>
+													{{/each}}
+												</ul>
+											</div>
+										</li>
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+
+							<div class="col s9">
+								<div class="study_content">
+									<h3 class="sc_heading">
+										{{{study.content.heading}}}
+									</h3>
+									<div class="sc_body">
+										{{{study.content.body}}}
+									</div>
+								</div>
+							</div>
+						</div>  
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col s3">
+						<a href="#" class="logo">
+							<img src="images/logo.png" alt="Универмаг Московский">
+						</a>
+					</div>
+					<div class="col s9">
+						<ul class="nav">
+							<li>
+								<a href="#">
+									Задать вопрос
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Контакты
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Сообщить об ошибке
+								</a>
+							</li>
+							<li class="withSep">
+								<a href="#" id="to_top">
+									Наверх
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+		<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+		<script src="js/script.js"></script>
+
+
+		<script>
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+					datasets: [{
+						label: '# of Votes',
+						data: [12, 19, 3, 5, 2, 3, 3, 10, 12, 12, 2],
+						backgroundColor: [
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						'#E3E3E3',
+						'#414141',
+						]
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+		</script>
+		<script>
+			var ctx = document.getElementById('Donut1').getContext('2d');
+			var myPieChart = new Chart(ctx, {
+				type: 'pie',
+				data: {
+					labels: [{{{stats1:.donut1.sector1.name}}}, {{{stats1:.donut1.sector2.name}}}],
+					datasets: [{
+						label: '# of Votes',
+						data: [{{{stats1:.donut1.sector1.count}}}, {{{stats1:.donut1.sector2.count}}}],
+						backgroundColor: [
+						'#FC395F',
+						'#C4C4C4',
+						]
+					}]
+				}
+			});
+			var ctx2 = document.getElementById('Donut2').getContext('2d');
+			var myPieChart = new Chart(ctx2, {
+				type: 'pie',
+				data: {
+					labels: [{{{stats1:.donut2.sector1.name}}}, {{{stats1:.donut2.sector2.name}}}],
+					datasets: [{
+						label: '# of Votes',
+						data: [{{{stats1:.donut2.sector1.count}}}, {{{stats1:.donut1.sector2.count}}}],
+						backgroundColor: [
+						'#FC395F',
+						'#C4C4C4',
+						]
+					}]
+				}
+			});
+			var ctx3 = document.getElementById('Donut3').getContext('2d');
+			var myPieChart = new Chart(ctx3, {
+				type: 'pie',
+				data: {
+					labels: [{{{stats1:.donut3.sector1.name}}}, {{{stats1:.donut3.sector2.name}}}],
+					datasets: [{
+						label: '# of Votes',
+						data: [{{{stats1:.donut3.sector1.count}}}, {{{stats1:.donut3.sector2.count}}}],
+						backgroundColor: [
+						'#FC395F',
+						'#C4C4C4',
+						]
+					}]
+				}
+			});
+
+			var ctx4 = document.getElementById('Donut4').getContext('2d');
+			var myPieChart = new Chart(ctx4, {
+				type: 'pie',
+				data: {
+					labels: ["Пройдено тестов", "Не пройдено тестов"],
+					datasets: [{
+						label: '# of Votes',
+						data: [25, 2],
+						backgroundColor: [
+						'#FC395F',
+						'#C4C4C4',
+						]
+					}]
+				}
+			});
+		</script>
+	</body>
+	</html>

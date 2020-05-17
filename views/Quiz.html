@@ -1,0 +1,198 @@
+<html>
+<head id="init">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>{{{title}}}</title>
+
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">             
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/54e64f34b2.js" crossorigin="anonymous"></script>
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body> 
+
+		<div class="preloader-wrapper">
+			<div class="preloader">
+				<img src="images/loader.gif" alt="Loading..." width="100px">
+			</div>
+		</div>
+
+
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col s3">
+						<a href="#" class="logo">
+							<img src="images/logo.png" alt="Универмаг Московский">
+						</a>
+					</div>
+
+					<div class="col s9">
+						<ul class="nav">
+							<li>
+								<a class="modal-trigger" href="#modal1">
+									История
+								</a>
+							</li>
+							<li class="withDropdown">
+								<a href="#">
+									Адаптация
+									<i class="fas fa-chevron-down"></i>
+								</a>
+								<ul>
+									<li><a href="#">Lorem ipsum.</a></li>
+									<li><a href="#">Dolor, quasi!</a></li>
+									<li><a href="#">Obcaecati, sit.</a></li>
+								</ul>
+							</li>
+							<li class="withDropdown">
+								<a href="#">
+									Аттестация
+									<i class="fas fa-chevron-down"></i>
+								</a>
+								<ul>
+									<li><a href="#">Lorem ipsum.</a></li>
+									<li><a href="#">Dolor, quasi!</a></li>
+									<li><a href="#">Obcaecati, sit.</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">
+									Опросы
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Связь
+								</a>
+							</li>
+							<li class="withSep">
+								<a href="#">
+									{{{user_name}}}
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div class="wrapper quiz">
+
+
+			<div class="container">
+				<div class="row">
+					<div class="col s3">
+						<div class="study_guide">
+							<ul class="quiz_list">
+								{{#each quizes_list}}
+								<li>
+									<a 
+									href="{{this.link}}" 
+									{{#if this.id == opened_id}}
+									class="active"
+									>
+									{{this.title}}
+								</a>
+							</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+
+				<div class="col s9">
+					<div class="study_content quiz">
+						{{#each tasks}}
+						<div class="quiz_item">
+							<div class="qi_title">
+								{{this.question}}
+							</div>
+							<form action="#">
+								{{#each this.answers}}
+								<p>
+									<label>
+										<input type="radio" value="{{this.id}}" checked>
+										<span>{{this.name}}</span>
+									</label>
+								</p>
+								{{/each}}
+							</form>
+						</div>
+						{{/each}}
+
+
+						<a class="waves-effect waves-light btn">Сохранить</a>
+
+					</div>
+				</div>
+			</div>  
+		</div> 
+
+
+	</div>
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col s3">
+					<a href="#" class="logo">
+						<img src="images/logo.png" alt="Универмаг Московский">
+					</a>
+				</div>
+				<div class="col s9">
+					<ul class="nav">
+						<li>
+							<a href="#">
+								Задать вопрос
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								Контакты
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								Сообщить об ошибке
+							</a>
+						</li>
+						<li class="withSep">
+							<a href="#" id="to_top">
+								Наверх
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<div class="modals">
+		<div id="modal1" class="modal">
+			<div class="modal-content">
+				<h4>История универмага Московский</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptatem dolores repellat sed maiores esse deleniti sapiente quaerat laudantium. Ea quidem illo et ex ducimus, neque voluptatum maiores vitae, corporis sint fugit ipsum, ullam dolor. Sint voluptatum recusandae, ab sunt blanditiis sed non, odio praesentium voluptas deserunt voluptate rem ut autem voluptatibus asperiores. Ipsum, doloremque quia voluptatem, provident maiores facilis a reprehenderit optio deserunt vel aliquam voluptate doloribus accusantium ut perferendis soluta magni! Reprehenderit, vitae, ut veniam, doloremque iusto quidem incidunt praesentium recusandae dignissimos nam hic. Facilis veniam incidunt quis nostrum repudiandae, cumque nobis corporis voluptates ipsum maxime corrupti, laudantium minima ex fuga voluptatem? Molestiae quo tenetur, soluta fugit, quibusdam odio, labore temporibus nostrum non modi aperiam inventore dolore. Ullam nam, eum magni pariatur in soluta facilis odio, dolorum est cumque eaque, delectus non fugiat libero nulla rerum, inventore deleniti? Quasi deleniti ab consectetur eaque vero. Totam, vero, deserunt, quaerat eaque eius illum a accusamus explicabo libero suscipit quis eum ducimus eveniet ut atque. Dolorum quam temporibus veritatis ipsum, tenetur provident, nostrum quia necessitatibus, cumque nobis quisquam! Minus et sequi facere illum consectetur dolor quisquam possimus, in numquam accusamus autem optio delectus aliquid quo ipsa quasi, ut molestias aliquam quibusdam!</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptatem dolores repellat sed maiores esse deleniti sapiente quaerat laudantium. Ea quidem illo et ex ducimus, neque voluptatum maiores vitae, corporis sint fugit ipsum, ullam dolor. Sint voluptatum recusandae, ab sunt blanditiis sed non, odio praesentium voluptas deserunt voluptate rem ut autem voluptatibus asperiores. Ipsum, doloremque quia voluptatem, provident maiores facilis a reprehenderit optio deserunt vel aliquam voluptate doloribus accusantium ut perferendis soluta magni! Reprehenderit, vitae, ut veniam, doloremque iusto quidem incidunt praesentium recusandae dignissimos nam hic. Facilis veniam incidunt quis nostrum repudiandae, cumque nobis corporis voluptates ipsum maxime corrupti, laudantium minima ex fuga voluptatem? Molestiae quo tenetur, soluta fugit, quibusdam odio, labore temporibus nostrum non modi aperiam inventore dolore. Ullam nam, eum magni pariatur in soluta facilis odio, dolorum est cumque eaque, delectus non fugiat libero nulla rerum, inventore deleniti? Quasi deleniti ab consectetur eaque vero. Totam, vero, deserunt, quaerat eaque eius illum a accusamus explicabo libero suscipit quis eum ducimus eveniet ut atque. Dolorum quam temporibus veritatis ipsum, tenetur provident, nostrum quia necessitatibus, cumque nobis quisquam! Minus et sequi facere illum consectetur dolor quisquam possimus, in numquam accusamus autem optio delectus aliquid quo ipsa quasi, ut molestias aliquam quibusdam!</p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptatem dolores repellat sed maiores esse deleniti sapiente quaerat laudantium. Ea quidem illo et ex ducimus, neque voluptatum maiores vitae, corporis sint fugit ipsum, ullam dolor. Sint voluptatum recusandae, ab sunt blanditiis sed non, odio praesentium voluptas deserunt voluptate rem ut autem voluptatibus asperiores. Ipsum, doloremque quia voluptatem, provident maiores facilis a reprehenderit optio deserunt vel aliquam voluptate doloribus accusantium ut perferendis soluta magni! Reprehenderit, vitae, ut veniam, doloremque iusto quidem incidunt praesentium recusandae dignissimos nam hic. Facilis veniam incidunt quis nostrum repudiandae, cumque nobis corporis voluptates ipsum maxime corrupti, laudantium minima ex fuga voluptatem? Molestiae quo tenetur, soluta fugit, quibusdam odio, labore temporibus nostrum non modi aperiam inventore dolore. Ullam nam, eum magni pariatur in soluta facilis odio, dolorum est cumque eaque, delectus non fugiat libero nulla rerum, inventore deleniti? Quasi deleniti ab consectetur eaque vero. Totam, vero, deserunt, quaerat eaque eius illum a accusamus explicabo libero suscipit quis eum ducimus eveniet ut atque. Dolorum quam temporibus veritatis ipsum, tenetur provident, nostrum quia necessitatibus, cumque nobis quisquam! Minus et sequi facere illum consectetur dolor quisquam possimus, in numquam accusamus autem optio delectus aliquid quo ipsa quasi, ut molestias aliquam quibusdam!</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close btn-flat">Закрыть</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+	<script src="js/script.js"></script>
+</body>
+</html>
