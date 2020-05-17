@@ -5,10 +5,13 @@ var user = new Schema({
     login:{
         type:String,
         unique:true,
+        required:true
     },
     name:String,
     lastName:String,
     birthDate:Date,
-    admin:Boolean,
+    admin:{
+        type:Boolean,
+        required:true
 });
 module.exports = user;
