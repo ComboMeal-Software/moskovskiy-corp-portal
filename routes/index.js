@@ -66,11 +66,11 @@ router.post('login',jsonParser,(req,res)=>{
               req.session.userId = user.id;
               req.session.userLogin = user.login;
               req.session.admin = user.admin;
-              if(!user.admin)
-                res.render('Main.hbs')
+              if(!req.session.admin)
+              res.render('Main.hbs')
               else{
                res.render('Admin_main.hbs')
-             }
+         }
             }
           });
         }

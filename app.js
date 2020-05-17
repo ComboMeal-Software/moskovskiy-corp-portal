@@ -73,15 +73,18 @@ app.use(function(err, req, res, next) {
 app.listen(config.PORT, () =>
 console.log(`LilDevs app listening on port ${config.PORT}!`)
 );
-bcrypt.hash('AdminAdmin', null, null, (err, hash) =>{
-models.User.create({
-  login:'MoskovskyAdmin',
-  name:'Александр',
-  lastName:'Козак',
-  password: hash,
-  birthDate:new Date('03.05.1988'),
-  admin:true,
-});
-});
-
+let CreateAdmin = ()=>{
+  bcrypt.hash('AdminAdmin', null, null, (err, hash) =>{
+  models.User.create({
+    login:'MoskovskyAdmin',
+    name:'Александр',
+    lastName:'Козак',
+    patronymic:'Петрович',
+    password: hash,
+    birthDate:new Date('03.05.1988'),
+    admin:true,
+  });
+  });
+};
+//CreateAdmin();
 module.exports = app;

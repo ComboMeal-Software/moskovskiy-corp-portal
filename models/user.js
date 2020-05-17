@@ -7,13 +7,17 @@ const user = new Schema({
         unique:true,
         required:true
     },
+    department:String,
+    phoneNumber:String,
     name:String,
     lastName:String,
+    patronymic:String,
     birthDate:Date,
     password:String,
     admin:{
         type:Boolean,
         required:true
-    }
+    },
+    CompletedTests:Number,
 });
-module.exports = mongoose.model('User',user);;
+module.exports = mongoose.model('User',user);
