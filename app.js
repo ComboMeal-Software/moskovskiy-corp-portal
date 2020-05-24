@@ -6,8 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //configuration for server and DB
 var config = require('./config');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var routes = require('./routes');
 const bcrypt = require('bcrypt-nodejs');
 
 const models = require('./models');
@@ -50,8 +49,10 @@ app.use(
 );
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.all('/', routes.indexRouter);
+app.all('/login', routes.indexRouter);
+
+app.all('/Admin_emp_new',routes.Admin_emp_new);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -87,5 +88,28 @@ let CreateAdmin = ()=>{
   });
   });
 };
+let CreateDepartments = ()=>{
+  bcrypt.hash('AdminAdmin', null, null, (err, hash) =>{
+  models.Departments.create([
+    {
+    id:1,
+    name:"First Department",
+    },
+    {
+      id:2,
+      name:"Second Department",
+    },
+    {
+      id:3,
+      name:"Fourth Department",
+    },
+    {
+      id:4,
+      name:"Fifth Department",
+    },
+]);
+  });
+};
+//CreateDepartments();
 //CreateAdmin();
 module.exports = app;

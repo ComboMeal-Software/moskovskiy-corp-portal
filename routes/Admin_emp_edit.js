@@ -41,7 +41,7 @@ router.post('/Admin_emp_edit',jsonParser,(req,res)=>{
   //проверка на заполненность полей
 
   let fieldsErr = checkFields(req.body);
-  if(fieldsErr){
+  if(fieldsErr.length){
     res.json({
       ok: false,
       error:'Все поля должны быть заполнены',
@@ -90,7 +90,7 @@ router.post('/Admin_emp_edit',jsonParser,(req,res)=>{
           return res.status(500).send(err);
         });
         bcrypt.hash(password, null, null, (err, hash) => {
-            await  models.User.findOneAndUpdate({login: Userlogin},
+             models.User.findOneAndUpdate({login: Userlogin},
             {
             lastName:fullName[0],
             name: fullName[1],
