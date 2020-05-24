@@ -5,14 +5,17 @@ const models = require('../models');
 const pattern =  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const router = express.Router();
 const bodyParser = require("body-parser");
-const department_list = models.Departments.find();
+var department_list = [];
+models.Departments.find().sort({id:1}).then(departments => department_list = departments);
+
 //парсить будем Json
 
 const jsonParser = bodyParser.json();
 
 //get
 
-router.post('/Admin_emp_new',(req,res)=>{
+router.use('/Admin_emp_new',(req,res)=>{
+  console.log('Admin_emp_new');
   if(req.session.admin){
   res.render('Admin_emp_edit.hbs',{department_list})
 }else{
@@ -39,7 +42,7 @@ router.post('/Admin_emp_new',jsonParser,(req,res)=>{
   //проверка на заполненность полей
 
   let fieldsErr = checkFields(req.body);
-  if(fieldsErr){
+  if(fieldsErr.length){
     res.json({
       ok: false,
       error:'Все поля должны быть заполнены',
