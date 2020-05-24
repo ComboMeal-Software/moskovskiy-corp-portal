@@ -7,7 +7,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 var department_list = [];
 models.Departments.find().sort({id:1}).then(departments => department_list = departments);
-
+console.log(department_list);
 //парсить будем Json
 
 const jsonParser = bodyParser.json();

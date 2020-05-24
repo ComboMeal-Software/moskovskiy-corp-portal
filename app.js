@@ -87,7 +87,7 @@ let CreateAdmin = ()=>{
   });
   });
 };
-let CreateDepartents = ()=>{
+let CreateDepartments = ()=>{
   bcrypt.hash('AdminAdmin', null, null, (err, hash) =>{
   models.Departments.create([
     {
@@ -109,6 +109,6 @@ let CreateDepartents = ()=>{
 ]);
   });
 };
-//CreateDepartents();
+//CreateDepartments();
 //CreateAdmin();
 module.exports = app;
