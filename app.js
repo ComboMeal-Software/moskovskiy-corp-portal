@@ -8,7 +8,7 @@ var logger = require('morgan');
 var config = require('./config');
 var routes = require('./routes');
 const bcrypt = require('bcrypt-nodejs');
-
+const fileUpload = require('express-fileupload');
 const models = require('./models');
 
 //Mongo
@@ -22,8 +22,6 @@ var dataBaseConnect = require('./databaseConnect');
 // Connect to database
 
 dataBaseConnect();
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,11 +47,17 @@ app.use(
 );
 
 
-app.all('/', routes.indexRouter);
-app.all('/login', routes.indexRouter);
-
+app.all(['/login','/'], routes.indexRouter);
 app.all('/Admin_emp_new',routes.Admin_emp_new);
 
+
+app.all('/exit', function(req, res) {
+  // Удалить сессию
+  if (req.session) {
+    req.session.destroy(()=>console.log('You exited!'));
+  }
+  res.redirect('/login');
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -83,7 +87,6 @@ let CreateAdmin = ()=>{
     lastName:'Козак',
     patronymic:'Петрович',
     password: hash,
-    birthDate:new Date('03.05.1988'),
     admin:true,
   });
   });

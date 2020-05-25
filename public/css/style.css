@@ -559,3 +559,6 @@ footer .nav li.withSep::before {
     width: 60%;
     margin: auto;
 }
+label{
+	font-size:15px;
+}

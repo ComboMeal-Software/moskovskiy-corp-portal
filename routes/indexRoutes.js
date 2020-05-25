@@ -7,12 +7,13 @@ const jsonParser = bodyParser.json();
 const router = express.Router();
 
 /* GET home page. */
-router.get('/'||'login', (req,res)=>{
+router.get(['/login','/'], (req,res)=>{
   if(!req.session.userLogin) {
     res.render('login.hbs',{ok:true, title:'ВОР ТРУСОВ'})
 } else{
-    if(!req.session.admin)
-      res.render('Main.hbs')
+    if(!req.session.admin){
+    console.log(req.session);
+      res.render('Main.hbs')}
     else{
       res.render('Admin_main.hbs')
   }

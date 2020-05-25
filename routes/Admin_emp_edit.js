@@ -15,7 +15,7 @@ const jsonParser = bodyParser.json();
 router.get('/Admin_emp_edit',(req,res)=>{
   if(req.session.admin){
         models.User.findOne({login:req.query.Email}).then(user =>{
-        res.render('Admin_emp_edit.hbs',{department_list, user})
+        res.render('Admin_emp_edit.hbs',{department_list, user,department_list,emp_action:"/Admin_emp_new",title:"Редактировать"})
       });
 }else{
   res.redirect('/');
@@ -82,7 +82,7 @@ router.post('/Admin_emp_edit',jsonParser,(req,res)=>{
       // если такого юзера не обнаружено - редактируем
 
       if (!user) {
-        let fullName = req.body.name.split(' ');
+        let fullName = req.body.name.trim().split(' ');
         let avatar = req.files.avatar;
         filename = './public/avatars/'+ login + Date.now();
         avatar.mv(filename, (err)=>{
@@ -91,17 +91,16 @@ router.post('/Admin_emp_edit',jsonParser,(req,res)=>{
         });
         bcrypt.hash(password, null, null, (err, hash) => {
              models.User.findOneAndUpdate({login: Userlogin},
-            {
-            lastName:fullName[0],
-            name: fullName[1],
-            patronymic:fullName[3],
-            department:req.body.department,
-            phoneNumber:req.body.phoneNumber,
-            login,
-            password:hash,
-            birthdate: new Date (req.body.birthdate),
-            avatar:filename,
-          }, (err,user)=>{
+              {
+                lastName:fullName[0],
+                name: fullName[1],
+                patronymic:fullName[3],
+                department:req.body.department,
+                position:req.body.position,
+                login,
+                password:hash,
+                avatar:filename,
+              }, (err,user)=>{
             if(!err){
                 res.json({
                     ok:true,

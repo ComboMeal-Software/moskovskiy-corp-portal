@@ -3,9 +3,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	<title>{{{title}}}</title>
-
-	<link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">             
+	<link href="css/style.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="https://kit.fontawesome.com/54e64f34b2.js" crossorigin="anonymous"></script>
 		<!--[if lt IE 9]>
@@ -34,7 +33,7 @@
 					<div class="col s9">
 						<ul class="nav">
 							<li class="flr">
-								<a href="#">
+								<a href="exit">
 									Выйти
 									<i class="fas fa-sign-out-alt"></i>
 								</a>
@@ -60,17 +59,19 @@
 
 
 					<div class="col s12">
-						<div class="user_banner">
+						<form action={{{emp_action}}} method="POST" enctype="multipart/form-data" autocomplete>
+							<div class="user_banner">
 							<div class="user">
 								<div class="avatar">
 									<img src="{{{avatar}}}" alt="Avatar">
+									<input type ="file" accept="image/*" id="avatar" name = "avatar" class="hide">
 								</div>
 								<div class="details" style="text-align: left; padding-left: 20px;">
 									<div class="buttons">
 										<div>
-											<a href="#" class="btn-c btn-cancel btn-sm">
+											<label for="avatar" class="btn-c btn-cancel btn-sm">
 												Загрузить новое фото
-											</a>
+											</label>
 										</div>
 										<br>
 										<div><a href="#" class="btn-c btn-cancel btn-sm">
@@ -82,13 +83,13 @@
 
 							<div class="user_edit">
 								<div class="input-field">
-									<input value="{{{full_name}}}" id="first_name" type="text" class="validate">
-									<label for="first_name">ФИО</label>
+									<input value="{{user.name}} {{user.lastname}} {{user.patronyc}}" id="name" type="text" name="name" class="validate">
+									<label for="name">ФИО</label>
 								</div>
 
 								<div class="input-field">
-									<select multiple>
-										<option value="" disabled selected>Выберите отдел</option>
+									<select>
+										<option name="department" value="" >Выберите отдел</option>
 
 										{{#each department_list}}
 										<option value="{{this.id}}">{{this.name}}</option>
@@ -96,24 +97,25 @@
 									</select>
 									<label>Отдел</label>
 								</div>
-
 								<div class="input-field">
-									<input id="first_name" type="text" class="validate" value="{{{phone}}}">
-									<label for="first_name">Номер телефона</label>
+									<input id="position" type="text" name="position" value="{{{user.position}}}">
+									<label for="position">Должность</label>
 								</div>
-
 								<div class="input-field">
-									<input id="first_name" type="text" class="validate" value="{{{email}}}">
-									<label for="first_name">Email</label>
+									<input id="login" type="text" class="validate" name="login" value="{{{user.login}}}">
+									<label for="login">Email</label>
 								</div>
-
+								<div class="input-field">
+									<input id="password" type="password" class="validate" name="password" value="{{{user.password}}}">
+									<label for="password">Пароль</label>
+								</div>
 								<div class="tar">
-									<a class="btn-c btn-primary">Сохранить</a>
-									<a class="btn-c btn-cancel">Отмена</a>
+									<button type="submit" class="btn-c btn-primary">Сохранить</a>
+									<button type="reset" class="btn-c btn-cancel">Отмена</a>
 								</div>
 							</div>
-						</div> 
-
+							</div> 
+						</form>
 					</div>
 					
 

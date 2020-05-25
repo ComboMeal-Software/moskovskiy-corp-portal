@@ -8,16 +8,15 @@ const user = new Schema({
         required:true
     },
     department:String,
-    phoneNumber:String,
     name:String,
     lastName:String,
     patronymic:String,
-    birthDate:Date,
+    position:String,
     password:String,
     avatar:String,
     admin:{
         type:Boolean,
-        required:true
+        default:false,
     },
     CompletedTests:Number,
 });
